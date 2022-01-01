@@ -4,17 +4,40 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.fragment.app.Fragment;
 
 import tech.halitpractice.OZKVeterinaryAdmin.R;
+import tech.halitpractice.OZKVeterinaryAdmin.Utils.ChangeFragments;
 
 public class HomeFragment extends Fragment {
+
+    private LinearLayout kampanyaLayout;
+    private View view;
+    private ChangeFragments changeFragments;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        view = inflater.inflate(R.layout.fragment_home, container, false);
+        tanimla();
+        clickToLayout();
+        return view;
+    }
+
+    public void tanimla(){
+        kampanyaLayout = view.findViewById(R.id.kampanyaLayout);
+        changeFragments = new ChangeFragments(getContext());
+    }
+
+    public void clickToLayout(){
+        kampanyaLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               changeFragments.change(new KampanyaFragment());
+            }
+        });
     }
 }
