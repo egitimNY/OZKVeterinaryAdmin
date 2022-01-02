@@ -53,7 +53,7 @@
                             android:background="#3e0123"
                             android:gravity="center"
                             android:padding="10dp"
-                            android:text="Sorular"
+                            android:text="Questions"
                             android:textColor="#fff"
                             android:textSize="15dp"
                             android:textStyle="bold" />
@@ -92,7 +92,7 @@
                             android:background="#10102c"
                             android:gravity="center"
                             android:padding="10dp"
-                            android:text="Kullanicilar"
+                            android:text="Users"
                             android:textColor="#fff"
                             android:textSize="15dp"
                             android:textStyle="bold" />
@@ -141,7 +141,7 @@
                             android:background="#3d464f"
                             android:gravity="center"
                             android:padding="10dp"
-                            android:text="Kampanya Ekle"
+                            android:text="Add Campaigns"
                             android:textColor="#fff"
                             android:textSize="15dp"
                             android:textStyle="bold" />
@@ -180,10 +180,10 @@
                             android:background="#7e0309"
                             android:gravity="center"
                             android:padding="10dp"
-                            android:text="PET TAKIP"
+                            android:text="Pet Tracking"
                             android:textColor="#fff"
                             android:textSize="15dp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"/>
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
