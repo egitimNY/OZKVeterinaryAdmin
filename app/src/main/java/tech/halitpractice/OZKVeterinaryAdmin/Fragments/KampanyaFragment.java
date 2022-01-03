@@ -1,7 +1,11 @@
 package tech.halitpractice.OZKVeterinaryAdmin.Fragments;
 
 import android.app.AlertDialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +15,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +34,7 @@ import tech.halitpractice.OZKVeterinaryAdmin.RestApi.ManagerAll;
 import tech.halitpractice.OZKVeterinaryAdmin.Utils.ChangeFragments;
 import tech.halitpractice.OZKVeterinaryAdmin.Utils.Warnings;
 
+
 public class KampanyaFragment extends Fragment {
 
     private View view;
@@ -36,6 +43,8 @@ public class KampanyaFragment extends Fragment {
     private KampanyaAdapter kampanyaAdapter;
     private ChangeFragments changeFragments;
     private Button kampanyaEkle;
+    private ImageView kampanyaEkleImageView;
+    Bitmap bitmap;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -100,7 +109,7 @@ public class KampanyaFragment extends Fragment {
 
         EditText kampanyaBaslikEditText = view.findViewById(R.id.kampanyaBaslikEditText);
         EditText kampanyaIcerikEditText = view.findViewById(R.id.kampanyaIcerikEditText);
-        ImageView kampanyaEkleImageView = view.findViewById(R.id.kampanyaEkleImageView);
+        kampanyaEkleImageView = view.findViewById(R.id.kampanyaEkleImageView);
         Button kampanyaEkleButon = view.findViewById(R.id.kampanyaEkleButon);
         Button kampanyaImageEkleButon = view.findViewById(R.id.kampanyaImageEkleButon);
 
@@ -108,8 +117,37 @@ public class KampanyaFragment extends Fragment {
         alert.setView(view);
         alert.setCancelable(true);
         final AlertDialog alertDialog = alert.create();
-
+        kampanyaImageEkleButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                galeriAc();
+            }
+        });
         alertDialog.show();
+
+    }
+
+    public void galeriAc(){
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent,777);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+//        Log.i( "resimTetikleme",""+data.getData());
+//        if (resultCode==777 && requestCode ==RESULT_OK && data!=null)
+
+            Uri path = data.getData();
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),path);
+                kampanyaEkleImageView.setImageBitmap(bitmap);
+                kampanyaEkleImageView.setVisibility(View.VISIBLE);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
     }
 }
