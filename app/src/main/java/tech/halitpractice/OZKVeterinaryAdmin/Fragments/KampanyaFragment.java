@@ -92,7 +92,7 @@ public class KampanyaFragment extends Fragment {
                 if (response.body().get(0).isTf())
                 {
                     kampanyaList = response.body();
-                    kampanyaAdapter = new KampanyaAdapter(kampanyaList,getContext());
+                    kampanyaAdapter = new KampanyaAdapter(kampanyaList,getContext(),getActivity());
                     kampanyaRecyclerView.setAdapter(kampanyaAdapter);
 
 

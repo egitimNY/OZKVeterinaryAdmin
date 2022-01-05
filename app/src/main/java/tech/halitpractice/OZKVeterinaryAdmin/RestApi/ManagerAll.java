@@ -5,6 +5,7 @@ import java.util.List;
 import retrofit2.Call;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaEkleModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaModel;
+import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaSilModel;
 
 public class ManagerAll extends BaseManager{
 
@@ -22,6 +23,11 @@ public class ManagerAll extends BaseManager{
 
     public Call<KampanyaEkleModel> addKampanya(String baslik,String icerik, String imageString) {
         Call<KampanyaEkleModel> x = getRestApi().addKampanya(baslik,icerik,imageString);
+        return  x ;
+    }
+
+    public Call<KampanyaSilModel> kampanyaSil(String id ) {
+        Call<KampanyaSilModel> x = getRestApi().kampanyaSil(id);
         return  x ;
     }
 
