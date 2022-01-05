@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -18,8 +19,14 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaModel;
+import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaSilModel;
 import tech.halitpractice.OZKVeterinaryAdmin.R;
+import tech.halitpractice.OZKVeterinaryAdmin.RestApi.ManagerAll;
+import tech.halitpractice.OZKVeterinaryAdmin.Utils.Warnings;
 
 public class KampanyaAdapter extends RecyclerView.Adapter<KampanyaAdapter.ViewHolder>{
 
@@ -51,7 +58,7 @@ public class KampanyaAdapter extends RecyclerView.Adapter<KampanyaAdapter.ViewHo
             @Override
             public void onClick(View v) {
 
-                addKampanyaAlert();
+                kampanyaSilAlert(position);
 
             }
         });
@@ -80,7 +87,7 @@ public class KampanyaAdapter extends RecyclerView.Adapter<KampanyaAdapter.ViewHo
         }
     }
 
-    public void addKampanyaAlert(){
+    public void kampanyaSilAlert(final int position){
         LayoutInflater layoutInflater = activity.getLayoutInflater();
         View view = layoutInflater.inflate(R.layout.kampanya_sil_layout,null);
 
@@ -95,7 +102,8 @@ public class KampanyaAdapter extends RecyclerView.Adapter<KampanyaAdapter.ViewHo
         kampanyaSilTamam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                kampanyaSil(list.get(position).getId().toString(),position);
+                alertDialog.cancel();
             }
         });
         kampanyaSilIptal.setOnClickListener(new View.OnClickListener() {
@@ -107,4 +115,34 @@ public class KampanyaAdapter extends RecyclerView.Adapter<KampanyaAdapter.ViewHo
         alertDialog.show();
 
     }
+    public void kampanyaSil(String id, final int position)
+    {
+        Call<KampanyaSilModel> req = ManagerAll.getInstance().kampanyaSil(id);
+        req.enqueue(new Callback<KampanyaSilModel>() {
+            @Override
+            public void onResponse(Call<KampanyaSilModel> call, Response<KampanyaSilModel> response) {
+                if (response.body().isTf())
+                {
+                    Toast.makeText(context, response.body().getText(), Toast.LENGTH_LONG).show();
+                    deleteToList(position);
+                }else {
+                    Toast.makeText(context, response.body().getText(), Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<KampanyaSilModel> call, Throwable t) {
+                Toast.makeText(context, Warnings.internetProblemText, Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+    }
+
+    public void deleteToList(int position){
+        list.remove(position);
+        notifyItemRemoved(position);
+        notifyDataSetChanged();
+    }
+
 }
