@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import tech.halitpractice.OZKVeterinaryAdmin.Adapters.KampanyaAdapter;
+import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaEkleModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaModel;
 import tech.halitpractice.OZKVeterinaryAdmin.R;
 import tech.halitpractice.OZKVeterinaryAdmin.RestApi.ManagerAll;
@@ -44,7 +47,9 @@ public class KampanyaFragment extends Fragment {
     private ChangeFragments changeFragments;
     private Button kampanyaEkle;
     private ImageView kampanyaEkleImageView;
-    Bitmap bitmap;
+    private Bitmap bitmap;
+    private String imageString;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,6 +69,8 @@ public class KampanyaFragment extends Fragment {
         kampanyaList = new ArrayList<>();
         changeFragments = new ChangeFragments(getContext());
         kampanyaEkle = view.findViewById(R.id.kampanyaEkle);
+        bitmap = null;
+        imageString = "";
     }
 
     public void click(){
@@ -107,8 +114,8 @@ public class KampanyaFragment extends Fragment {
         LayoutInflater layoutInflater = this.getLayoutInflater();
         View view = layoutInflater.inflate(R.layout.kampanya_ekle_layout,null);
 
-        EditText kampanyaBaslikEditText = view.findViewById(R.id.kampanyaBaslikEditText);
-        EditText kampanyaIcerikEditText = view.findViewById(R.id.kampanyaIcerikEditText);
+        final EditText kampanyaBaslikEditText = view.findViewById(R.id.kampanyaBaslikEditText);
+        final EditText kampanyaIcerikEditText = view.findViewById(R.id.kampanyaIcerikEditText);
         kampanyaEkleImageView = view.findViewById(R.id.kampanyaEkleImageView);
         Button kampanyaEkleButon = view.findViewById(R.id.kampanyaEkleButon);
         Button kampanyaImageEkleButon = view.findViewById(R.id.kampanyaImageEkleButon);
@@ -121,6 +128,23 @@ public class KampanyaFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 galeriAc();
+            }
+        });
+        kampanyaEkleButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!imageToString().equals("") && !kampanyaBaslikEditText.getText().toString().equals("") &&
+                        !kampanyaIcerikEditText.getText().toString().equals("")) {
+
+                        kampanyaEkle(kampanyaBaslikEditText.getText().toString(),kampanyaIcerikEditText.getText().toString(),
+                                imageToString(),alertDialog);
+                        kampanyaBaslikEditText.setText("");
+                        kampanyaIcerikEditText.setText("");
+
+                }else
+                    {
+                        Toast.makeText(getContext(), "All fields must be filled and the picture must be selected.", Toast.LENGTH_LONG).show();
+                    }
             }
         });
         alertDialog.show();
@@ -140,14 +164,51 @@ public class KampanyaFragment extends Fragment {
 //        Log.i( "resimTetikleme",""+data.getData());
 //        if (resultCode==777 && requestCode ==RESULT_OK && data!=null)
 
+        if (requestCode==777 && data !=null) {
             Uri path = data.getData();
             try {
-                bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),path);
+                bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), path);
                 kampanyaEkleImageView.setImageBitmap(bitmap);
                 kampanyaEkleImageView.setVisibility(View.VISIBLE);
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
+        }
+
+    }
+
+    public String imageToString(){
+        if (bitmap!=null) {
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+            byte[] byt = byteArrayOutputStream.toByteArray();
+            imageString = Base64.encodeToString(byt, Base64.DEFAULT);
+            return imageString;
+        }else {
+            return imageString;
+        }
+    }
+
+    public void kampanyaEkle(String baslik, String icerik, String imageString, final AlertDialog alertDialog){
+        Call<KampanyaEkleModel> req = ManagerAll.getInstance().addKampanya(baslik,icerik,imageString);
+        req.enqueue(new Callback<KampanyaEkleModel>() {
+            @Override
+            public void onResponse(Call<KampanyaEkleModel> call, Response<KampanyaEkleModel> response) {
+                if (response.body().isTf()){
+                    Toast.makeText(getContext(),response.body().getSonuc(), Toast.LENGTH_LONG).show();
+                    getKampanya();
+                    alertDialog.cancel();
+                }else {
+                    Toast.makeText(getContext(),response.body().getSonuc(), Toast.LENGTH_LONG).show();
+                    alertDialog.cancel();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<KampanyaEkleModel> call, Throwable t) {
+                Toast.makeText(getContext(),Warnings.internetProblemText, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
