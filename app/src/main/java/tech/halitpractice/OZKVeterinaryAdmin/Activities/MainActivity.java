@@ -16,6 +16,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ChangeFragments changeFragments = new ChangeFragments(MainActivity.this);
-        changeFragments.changeBack(new HomeFragment());
+        changeFragments.change(new HomeFragment());
     }
 }

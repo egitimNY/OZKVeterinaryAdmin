@@ -162,6 +162,8 @@
                     app:cardElevation="5dp">
 
                     <LinearLayout
+                        android:id="@+id/asiTakipLayout"
+                        android:clickable="true"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
@@ -180,7 +182,7 @@
                             android:background="#7e0309"
                             android:gravity="center"
                             android:padding="10dp"
-                            android:text="Pet Tracking"
+                            android:text="Pet Asi Tracking"
                             android:textColor="#fff"
                             android:textSize="15dp"
                             android:textStyle="bold"/>

@@ -6,6 +6,7 @@ import retrofit2.Call;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaEkleModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaSilModel;
+import tech.halitpractice.OZKVeterinaryAdmin.Models.PetAsiTakipModel;
 
 public class ManagerAll extends BaseManager{
 
@@ -28,6 +29,11 @@ public class ManagerAll extends BaseManager{
 
     public Call<KampanyaSilModel> kampanyaSil(String id ) {
         Call<KampanyaSilModel> x = getRestApi().kampanyaSil(id);
+        return  x ;
+    }
+
+    public Call<List<PetAsiTakipModel>> getAsiPet(String tarih ) {
+        Call<List<PetAsiTakipModel>> x = getRestApi().getPetAsiTakip(tarih);
         return  x ;
     }
 

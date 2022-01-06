@@ -10,6 +10,7 @@ import retrofit2.http.POST;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaEkleModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaSilModel;
+import tech.halitpractice.OZKVeterinaryAdmin.Models.PetAsiTakipModel;
 
 public interface RestApi {
 
@@ -23,6 +24,10 @@ public interface RestApi {
     @FormUrlEncoded
     @POST("/veteriner/kampanyasil.php")
     Call<KampanyaSilModel> kampanyaSil(@Field("id") String petid );
+
+    @FormUrlEncoded
+    @POST("/veteriner/veterinerAdminAsitakip.php")
+    Call<List<PetAsiTakipModel>> getPetAsiTakip(@Field("tarih") String tarih );
 
 
 }

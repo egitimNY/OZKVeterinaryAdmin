@@ -20,16 +20,16 @@ public class ChangeFragments {
         ((FragmentActivity)context).getSupportFragmentManager().beginTransaction()
                 .replace(R.id.mainFrameLayout,fragment,"fragment")
                 .setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-//                .commit();
-                .addToBackStack(null).commit();
+                .commit();
+//                .addToBackStack(null).commit();
     }
 
     public void changeBack(Fragment fragment){
         ((FragmentActivity)context).getSupportFragmentManager().beginTransaction()
                 .replace(R.id.mainFrameLayout,fragment,"fragment")
                 .setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                .commit();
-//                .addToBackStack(null).commit();
+//                .commit();
+                .addToBackStack(null).commit();
     }
 
 

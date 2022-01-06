@@ -13,7 +13,7 @@ import tech.halitpractice.OZKVeterinaryAdmin.Utils.ChangeFragments;
 
 public class HomeFragment extends Fragment {
 
-    private LinearLayout kampanyaLayout;
+    private LinearLayout kampanyaLayout,asiTakipLayout;
     private View view;
     private ChangeFragments changeFragments;
 
@@ -29,6 +29,7 @@ public class HomeFragment extends Fragment {
 
     public void tanimla(){
         kampanyaLayout = view.findViewById(R.id.kampanyaLayout);
+        asiTakipLayout = view.findViewById(R.id.asiTakipLayout);
         changeFragments = new ChangeFragments(getContext());
     }
 
@@ -36,7 +37,13 @@ public class HomeFragment extends Fragment {
         kampanyaLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               changeFragments.change(new KampanyaFragment());
+               changeFragments.changeBack(new KampanyaFragment());
+            }
+        });
+        asiTakipLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeFragments.changeBack(new AsiTakipFragment());
             }
         });
     }
