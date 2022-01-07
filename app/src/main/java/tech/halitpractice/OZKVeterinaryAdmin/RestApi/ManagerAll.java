@@ -3,6 +3,7 @@ package tech.halitpractice.OZKVeterinaryAdmin.RestApi;
 import java.util.List;
 
 import retrofit2.Call;
+import tech.halitpractice.OZKVeterinaryAdmin.Models.AsiOnaylaModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaEkleModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaSilModel;
@@ -34,6 +35,11 @@ public class ManagerAll extends BaseManager{
 
     public Call<List<PetAsiTakipModel>> getAsiPet(String tarih ) {
         Call<List<PetAsiTakipModel>> x = getRestApi().getPetAsiTakip(tarih);
+        return  x ;
+    }
+
+    public Call<AsiOnaylaModel> asiOnayla(String id ) {
+        Call<AsiOnaylaModel> x = getRestApi().asiOnayla(id);
         return  x ;
     }
 

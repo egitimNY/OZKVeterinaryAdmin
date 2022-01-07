@@ -7,6 +7,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import tech.halitpractice.OZKVeterinaryAdmin.Models.AsiOnaylaModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaEkleModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaSilModel;
@@ -23,11 +24,15 @@ public interface RestApi {
 
     @FormUrlEncoded
     @POST("/veteriner/kampanyasil.php")
-    Call<KampanyaSilModel> kampanyaSil(@Field("id") String petid );
+    Call<KampanyaSilModel> kampanyaSil(@Field("id") String kamid );
 
     @FormUrlEncoded
     @POST("/veteriner/veterinerAdminAsitakip.php")
     Call<List<PetAsiTakipModel>> getPetAsiTakip(@Field("tarih") String tarih );
+
+    @FormUrlEncoded
+    @POST("/veteriner/veterinerAdminAsiOnayla.php")
+    Call<AsiOnaylaModel> asiOnayla(@Field("id") String petid );
 
 
 }

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,8 +18,14 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import tech.halitpractice.OZKVeterinaryAdmin.Models.AsiOnaylaModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.PetAsiTakipModel;
 import tech.halitpractice.OZKVeterinaryAdmin.R;
+import tech.halitpractice.OZKVeterinaryAdmin.RestApi.ManagerAll;
+import tech.halitpractice.OZKVeterinaryAdmin.Utils.Warnings;
 
 public class PetAsiTakipAdapter extends RecyclerView.Adapter<PetAsiTakipAdapter.ViewHolder>{
 
@@ -53,8 +60,14 @@ public class PetAsiTakipAdapter extends RecyclerView.Adapter<PetAsiTakipAdapter.
             }
         });
 
-    }
+        holder.asiTakipOkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                asiOnayla(list.get(position).getAsiId().toString(),position);
+            }
+        });
 
+    }
 
     @Override
     public int getItemCount() {
@@ -79,10 +92,32 @@ public class PetAsiTakipAdapter extends RecyclerView.Adapter<PetAsiTakipAdapter.
         }
     }
 
+    public void deleteToList(int position){
+        list.remove(position);
+        notifyItemRemoved(position);
+        notifyDataSetChanged();
+    }
+
     public void ara(String numara){
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse("tel:"+numara));
         activity.startActivity(intent);
+    }
+
+    public void asiOnayla(String id, final int position){
+        Call<AsiOnaylaModel> req = ManagerAll.getInstance().asiOnayla(id);
+        req.enqueue(new Callback<AsiOnaylaModel>() {
+            @Override
+            public void onResponse(Call<AsiOnaylaModel> call, Response<AsiOnaylaModel> response) {
+                Toast.makeText(context, response.body().getText().toString(), Toast.LENGTH_LONG).show();
+                deleteToList(position);
+            }
+
+            @Override
+            public void onFailure(Call<AsiOnaylaModel> call, Throwable t) {
+                Toast.makeText(context, Warnings.internetProblemText.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 }
