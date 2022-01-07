@@ -66,6 +66,12 @@ public class PetAsiTakipAdapter extends RecyclerView.Adapter<PetAsiTakipAdapter.
                 asiOnayla(list.get(position).getAsiId().toString(),position);
             }
         });
+        holder.asiTakipCancelButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                asiIptal(list.get(position).getAsiId().toString(),position);
+            }
+        });
 
     }
 
@@ -118,6 +124,23 @@ public class PetAsiTakipAdapter extends RecyclerView.Adapter<PetAsiTakipAdapter.
                 Toast.makeText(context, Warnings.internetProblemText.toString(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    public void asiIptal(String id, final int position){
+        Call<AsiOnaylaModel> req = ManagerAll.getInstance().asiIptal(id);
+        req.enqueue(new Callback<AsiOnaylaModel>() {
+            @Override
+            public void onResponse(Call<AsiOnaylaModel> call, Response<AsiOnaylaModel> response) {
+                Toast.makeText(context, response.body().getText().toString(), Toast.LENGTH_LONG).show();
+                deleteToList(position);
+            }
+
+            @Override
+            public void onFailure(Call<AsiOnaylaModel> call, Throwable t) {
+                Toast.makeText(context, Warnings.internetProblemText.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 
 }

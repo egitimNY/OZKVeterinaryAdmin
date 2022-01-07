@@ -34,5 +34,9 @@ public interface RestApi {
     @POST("/veteriner/veterinerAdminAsiOnayla.php")
     Call<AsiOnaylaModel> asiOnayla(@Field("id") String petid );
 
+    @FormUrlEncoded
+    @POST("/veteriner/veterinerAdminAsiIptal.php")
+    Call<AsiOnaylaModel> asiIptal(@Field("id") String petid );
+
 
 }
