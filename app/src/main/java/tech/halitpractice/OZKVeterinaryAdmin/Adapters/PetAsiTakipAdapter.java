@@ -2,6 +2,8 @@ package tech.halitpractice.OZKVeterinaryAdmin.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +46,12 @@ public class PetAsiTakipAdapter extends RecyclerView.Adapter<PetAsiTakipAdapter.
         holder.asiTakipBilgiText.setText(list.get(position).getKadi()+ " isimli kullanicinin "+ list.get(position).getPetisim()
         + " isimli petinin "+list.get(position).getAsiisim()+ " asisi yapilacaktir.");
         Picasso.get().load(list.get(position).getPetresim()).resize(200,180).into(holder.asiTakipImage);
-
+        holder.asiTakipAraButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ara(list.get(position).getTelefon().toString());
+            }
+        });
 
     }
 
@@ -72,5 +79,10 @@ public class PetAsiTakipAdapter extends RecyclerView.Adapter<PetAsiTakipAdapter.
         }
     }
 
+    public void ara(String numara){
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("tel:"+numara));
+        activity.startActivity(intent);
+    }
 
 }
