@@ -8,6 +8,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.AsiOnaylaModel;
+import tech.halitpractice.OZKVeterinaryAdmin.Models.CevaplaModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaEkleModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaSilModel;
@@ -41,5 +42,9 @@ public interface RestApi {
 
     @GET("/veteriner/veterinerAdminSorular.php")
     Call<List<SoruModel>> getSoru();
+
+    @FormUrlEncoded
+    @POST("/veteriner/veterinerAdminCevapla.php")
+    Call<CevaplaModel> cevapla(@Field("musid") String musid, @Field("soruid") String soruid, @Field("text") String text);
 
 }
