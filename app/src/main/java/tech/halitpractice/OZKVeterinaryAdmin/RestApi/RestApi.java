@@ -12,6 +12,7 @@ import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaEkleModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaSilModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.PetAsiTakipModel;
+import tech.halitpractice.OZKVeterinaryAdmin.Models.SoruModel;
 
 public interface RestApi {
 
@@ -38,5 +39,7 @@ public interface RestApi {
     @POST("/veteriner/veterinerAdminAsiIptal.php")
     Call<AsiOnaylaModel> asiIptal(@Field("id") String petid );
 
+    @GET("/veteriner/veterinerAdminSorular.php")
+    Call<List<SoruModel>> getSoru();
 
 }

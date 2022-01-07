@@ -8,6 +8,7 @@ import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaEkleModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaSilModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.PetAsiTakipModel;
+import tech.halitpractice.OZKVeterinaryAdmin.Models.SoruModel;
 
 public class ManagerAll extends BaseManager{
 
@@ -45,6 +46,11 @@ public class ManagerAll extends BaseManager{
 
     public Call<AsiOnaylaModel> asiIptal(String id ) {
         Call<AsiOnaylaModel> x = getRestApi().asiIptal(id);
+        return  x ;
+    }
+
+    public Call<List<SoruModel>> getSoru() {
+        Call<List<SoruModel>> x = getRestApi().getSoru();
         return  x ;
     }
 
