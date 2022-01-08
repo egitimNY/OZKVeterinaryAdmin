@@ -12,6 +12,7 @@ import tech.halitpractice.OZKVeterinaryAdmin.Models.CevaplaModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaEkleModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaSilModel;
+import tech.halitpractice.OZKVeterinaryAdmin.Models.KullanicilarModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.PetAsiTakipModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.SoruModel;
 
@@ -46,5 +47,8 @@ public interface RestApi {
     @FormUrlEncoded
     @POST("/veteriner/veterinerAdminCevapla.php")
     Call<CevaplaModel> cevapla(@Field("musid") String musid, @Field("soruid") String soruid, @Field("text") String text);
+
+    @GET("/veteriner/veterinerAdminKullanicilar.php")
+    Call<List<KullanicilarModel>> getKullanicilar();
 
 }

@@ -8,6 +8,7 @@ import tech.halitpractice.OZKVeterinaryAdmin.Models.CevaplaModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaEkleModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaSilModel;
+import tech.halitpractice.OZKVeterinaryAdmin.Models.KullanicilarModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.PetAsiTakipModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.SoruModel;
 
@@ -57,6 +58,11 @@ public class ManagerAll extends BaseManager{
 
     public Call<CevaplaModel> cevapla(String musid, String soruid, String text) {
         Call<CevaplaModel> x = getRestApi().cevapla(musid,soruid,text);
+        return  x ;
+    }
+
+    public Call<List<KullanicilarModel>> getKullanicilar() {
+        Call<List<KullanicilarModel>> x = getRestApi().getKullanicilar();
         return  x ;
     }
 

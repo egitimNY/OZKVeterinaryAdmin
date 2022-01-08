@@ -13,7 +13,7 @@ import tech.halitpractice.OZKVeterinaryAdmin.Utils.ChangeFragments;
 
 public class HomeFragment extends Fragment {
 
-    private LinearLayout kampanyaLayout,asiTakipLayout,soruLayout;
+    private LinearLayout kampanyaLayout,asiTakipLayout,soruLayout,kullanicilarLayout;
     private View view;
     private ChangeFragments changeFragments;
 
@@ -31,6 +31,7 @@ public class HomeFragment extends Fragment {
         kampanyaLayout = view.findViewById(R.id.kampanyaLayout);
         asiTakipLayout = view.findViewById(R.id.asiTakipLayout);
         soruLayout = view.findViewById(R.id.soruLayout);
+        kullanicilarLayout = view.findViewById(R.id.kullanicilarLayout);
         changeFragments = new ChangeFragments(getContext());
     }
 
@@ -51,6 +52,12 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 changeFragments.changeBack(new SorularFragment());
+            }
+        });
+        kullanicilarLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeFragments.changeBack(new KullanicilarFragment());
             }
         });
     }
