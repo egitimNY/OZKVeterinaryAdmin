@@ -16,19 +16,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import tech.halitpractice.OZKVeterinaryAdmin.Fragments.KullaniciPetlerFragment;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KullanicilarModel;
 import tech.halitpractice.OZKVeterinaryAdmin.R;
+import tech.halitpractice.OZKVeterinaryAdmin.Utils.ChangeFragments;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
 
     List<KullanicilarModel> list;
     Context context;
     Activity activity;
+    ChangeFragments changeFragments;
 
     public UserAdapter(List<KullanicilarModel> list, Context context, Activity activity) {
         this.list = list;
         this.context = context;
         this.activity = activity;
+        changeFragments = new ChangeFragments(context);
     }
 
     @NonNull
@@ -49,10 +53,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
 
             }
         });
-        holder.userPetEkle.setOnClickListener(new View.OnClickListener() {
+        holder.userPetlerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                changeFragments.changeWithParameters(new KullaniciPetlerFragment(),list.get(position).getId().toString());
             }
         });
 
@@ -67,14 +71,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView kullaniciNameText;
-        Button userPetEkle,userAramaYap;
+        Button userPetlerButton,userAramaYap;
         CardView userCardView;
 
         // itemView ile LisView'un he elemani icin Layout ile olusturdugumuz View tanimlamasi islemi gerceklesiyor
         public ViewHolder(View itemView) {
             super(itemView);
             kullaniciNameText = itemView.findViewById(R.id.kullaniciNameText);
-            userPetEkle = itemView.findViewById(R.id.userPetEkle);
+            userPetlerButton = itemView.findViewById(R.id.userPetler);
             userAramaYap = itemView.findViewById(R.id.userAramaYap);
             userCardView = itemView.findViewById(R.id.userCardView);
 

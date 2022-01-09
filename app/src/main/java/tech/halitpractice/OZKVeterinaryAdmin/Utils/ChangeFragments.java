@@ -1,6 +1,7 @@
 package tech.halitpractice.OZKVeterinaryAdmin.Utils;
 
 import android.content.Context;
+import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -25,6 +26,17 @@ public class ChangeFragments {
     }
 
     public void changeBack(Fragment fragment){
+        ((FragmentActivity)context).getSupportFragmentManager().beginTransaction()
+                .replace(R.id.mainFrameLayout,fragment,"fragment")
+                .setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+//                .commit();
+                .addToBackStack(null).commit();
+    }
+
+    public void changeWithParameters(Fragment fragment,String userId){
+        Bundle bundle = new Bundle();
+        bundle.putString("userid",userId);
+        fragment.setArguments(bundle);
         ((FragmentActivity)context).getSupportFragmentManager().beginTransaction()
                 .replace(R.id.mainFrameLayout,fragment,"fragment")
                 .setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
