@@ -30,6 +30,19 @@
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
+            <EditText
+                android:layout_width="match_parent"
+                android:paddingLeft="13dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/cevaplaEditText"
+                android:background="@drawable/edit_text_background"
+                android:hint="Enter your answer..."
+                />
+<!--
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
@@ -45,8 +58,11 @@
                     android:background="@drawable/edit_text_background"
                     android:hint="Enter your answer..."/>
             </com.google.android.material.textfield.TextInputLayout>
+-->
+            <Button
+                android:background="@color/beyaz"
+                android:textColor="#fff"
 
-            <com.google.android.material.button.MaterialButton
                 android:id="@+id/cevaplaButton"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
@@ -54,6 +70,16 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:text="Answer" />
+<!--
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cevaplaButton-"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:text="Answer" />
+            -->
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

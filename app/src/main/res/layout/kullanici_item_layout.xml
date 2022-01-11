@@ -40,7 +40,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/userPetler"
+                    android:id="@+id/userPetList"
                     android:layout_width="0dp"
                     android:textStyle="bold"
                     android:text="Petler"

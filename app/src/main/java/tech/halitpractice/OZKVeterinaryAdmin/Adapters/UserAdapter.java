@@ -78,7 +78,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
         public ViewHolder(View itemView) {
             super(itemView);
             kullaniciNameText = itemView.findViewById(R.id.kullaniciNameText);
-            userPetlerButton = itemView.findViewById(R.id.userPetler);
+            userPetlerButton = itemView.findViewById(R.id.userPetList);
             userAramaYap = itemView.findViewById(R.id.userAramaYap);
             userCardView = itemView.findViewById(R.id.userCardView);
 

@@ -97,7 +97,7 @@ public class KampanyaFragment extends Fragment {
 
 
                 }else {
-                    Toast.makeText(getContext(), "Herhangi bir kampanya bulunmamaktadir..", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Herhangi bir kampanya bulunmamaktadir..", Toast.LENGTH_SHORT).show();
                     changeFragments.change(new HomeFragment());
                 }
 
@@ -196,18 +196,18 @@ public class KampanyaFragment extends Fragment {
             @Override
             public void onResponse(Call<KampanyaEkleModel> call, Response<KampanyaEkleModel> response) {
                 if (response.body().isTf()){
-                    Toast.makeText(getContext(),response.body().getSonuc(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),response.body().getSonuc(), Toast.LENGTH_SHORT).show();
                     getKampanya();
                     alertDialog.cancel();
                 }else {
-                    Toast.makeText(getContext(),response.body().getSonuc(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),response.body().getSonuc(), Toast.LENGTH_SHORT).show();
                     alertDialog.cancel();
                 }
             }
 
             @Override
             public void onFailure(Call<KampanyaEkleModel> call, Throwable t) {
-                Toast.makeText(getContext(),Warnings.internetProblemText, Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(),Warnings.internetProblemText, Toast.LENGTH_SHORT).show();
             }
         });
     }

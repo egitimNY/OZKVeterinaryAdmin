@@ -1,9 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragments.KullaniciPetlerFragment">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/userPetListRecView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:layout_above="@+id/userPetEkle">
 
-</FrameLayout>
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <ImageView
+        android:id="@+id/petEkleResimYok"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/ordek"
+        android:layout_alignParentTop="true"/>
+
+    <TextView
+        android:id="@+id/petEkleUyariTex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bu Kullaniciya Ait Pet Yoktur. Pet Ekle Butonundan Pet Ekleyebilirsiniz."
+        android:gravity="center"
+        android:layout_below="@id/petEkleResimYok"
+        android:layout_marginTop="20dp"
+        android:textColor="#b62a25"
+        android:visibility="gone"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/userPetEkle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_alignParentBottom="true"
+        android:background="#5091cb"
+        android:text="Kullaniciya Yeni Pet Ekle"
+        android:textColor="#fff"
+        android:textStyle="bold"/>
+
+
+</RelativeLayout>

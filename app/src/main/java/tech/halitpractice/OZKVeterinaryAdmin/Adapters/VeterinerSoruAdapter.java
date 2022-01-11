@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,8 +16,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.button.MaterialButton;
 
 import java.util.List;
 
@@ -108,7 +107,7 @@ public class VeterinerSoruAdapter extends RecyclerView.Adapter<VeterinerSoruAdap
         View view = layoutInflater.inflate(R.layout.cevapla_alert_dialog_layout,null);
 
         final EditText cevaplaEditText = view.findViewById(R.id.cevaplaEditText);
-        MaterialButton cevaplaButton = view.findViewById(R.id.cevaplaButton);
+        Button cevaplaButton = view.findViewById(R.id.cevaplaButton);
         TextView cevaplanacakSoruText = view.findViewById(R.id.cevaplanacakSoruText);
         cevaplanacakSoruText.setText(soru);
 

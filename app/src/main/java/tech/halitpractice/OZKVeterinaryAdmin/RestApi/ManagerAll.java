@@ -11,6 +11,7 @@ import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaSilModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KullaniciPetlerModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KullanicilarModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.PetAsiTakipModel;
+import tech.halitpractice.OZKVeterinaryAdmin.Models.PetEkle;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.SoruModel;
 
 public class ManagerAll extends BaseManager{
@@ -69,6 +70,11 @@ public class ManagerAll extends BaseManager{
 
     public Call<List<KullaniciPetlerModel>> getPets(String id ) {
         Call<List<KullaniciPetlerModel>> x = getRestApi().getPets(id);
+        return  x ;
+    }
+
+    public Call<PetEkle> petEkle(String musid, String isim, String tur, String cins, String resim) {
+        Call<PetEkle> x = getRestApi().petEkle(musid,isim,tur,cins,resim);
         return  x ;
     }
 
