@@ -46,6 +46,4 @@
         android:text="Kullaniciya Yeni Pet Ekle"
         android:textColor="#fff"
         android:textStyle="bold"/>
-
-
 </RelativeLayout>

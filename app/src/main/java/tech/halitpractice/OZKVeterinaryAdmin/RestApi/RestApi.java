@@ -7,12 +7,14 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import tech.halitpractice.OZKVeterinaryAdmin.Models.AsiEkleModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.AsiOnaylaModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.CevaplaModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaEkleModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaSilModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KullaniciPetlerModel;
+import tech.halitpractice.OZKVeterinaryAdmin.Models.KullaniciSilModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KullanicilarModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.PetAsiTakipModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.PetEkle;
@@ -61,8 +63,25 @@ public interface RestApi {
     @POST("/veteriner/veterinerAdminPetEkle.php")
     Call<PetEkle> petEkle(@Field("musid") String musid, @Field("isim") String isim, @Field("tur") String tur, @Field("cins") String cins, @Field("resim") String resim);
 
+    @FormUrlEncoded
+    @POST("/veteriner/veterinerAdminAsiEkle.php")
+    Call<AsiEkleModel> asiEkle(@Field("musid") String musid, @Field("petid") String petid, @Field("name") String name, @Field("tarih") String tarih );
 
-
+    @FormUrlEncoded
+    @POST("/veteriner/veterinerKullaniciSil.php")
+    Call<KullaniciSilModel> kullaniciSil(@Field("id") String id );
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+

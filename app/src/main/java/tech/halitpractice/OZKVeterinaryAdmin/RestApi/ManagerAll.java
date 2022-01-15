@@ -3,12 +3,14 @@ package tech.halitpractice.OZKVeterinaryAdmin.RestApi;
 import java.util.List;
 
 import retrofit2.Call;
+import tech.halitpractice.OZKVeterinaryAdmin.Models.AsiEkleModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.AsiOnaylaModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.CevaplaModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaEkleModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaSilModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KullaniciPetlerModel;
+import tech.halitpractice.OZKVeterinaryAdmin.Models.KullaniciSilModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KullanicilarModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.PetAsiTakipModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.PetEkle;
@@ -78,4 +80,32 @@ public class ManagerAll extends BaseManager{
         return  x ;
     }
 
+    public Call<AsiEkleModel> addAsi(String musid, String petid, String name,String tarih) {
+        Call<AsiEkleModel> x = getRestApi().asiEkle(musid,petid,name,tarih);
+        return  x ;
+    }
+
+    public Call<KullaniciSilModel> userDelete(String id ) {
+        Call<KullaniciSilModel> x = getRestApi().kullaniciSil(id);
+        return  x ;
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
