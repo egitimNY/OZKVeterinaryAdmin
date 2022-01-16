@@ -48,7 +48,7 @@
                 android:paddingLeft="13dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="20dp"
-                android:hint="Pet Ismi Giriniz"/>
+                android:hint="Pet Türü Giriniz"/>
 
             <EditText
                 android:id="@+id/petEkleCinsEditText"
@@ -60,7 +60,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="20dp"
-                android:hint="Pet Cinsi Giriniz"/>
+                android:hint="Pet Özelligi Giriniz"/>
 
             <ImageView
                 android:id="@+id/petEkleImageView"

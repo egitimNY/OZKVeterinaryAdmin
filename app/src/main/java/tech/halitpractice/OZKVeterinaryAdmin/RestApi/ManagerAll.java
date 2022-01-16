@@ -14,6 +14,7 @@ import tech.halitpractice.OZKVeterinaryAdmin.Models.KullaniciSilModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KullanicilarModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.PetAsiTakipModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.PetEkle;
+import tech.halitpractice.OZKVeterinaryAdmin.Models.PetSilModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.SoruModel;
 
 public class ManagerAll extends BaseManager{
@@ -87,6 +88,11 @@ public class ManagerAll extends BaseManager{
 
     public Call<KullaniciSilModel> userDelete(String id ) {
         Call<KullaniciSilModel> x = getRestApi().kullaniciSil(id);
+        return  x ;
+    }
+
+    public Call<PetSilModel> petDelete(String id ) {
+        Call<PetSilModel> x = getRestApi().petSil(id);
         return  x ;
     }
 

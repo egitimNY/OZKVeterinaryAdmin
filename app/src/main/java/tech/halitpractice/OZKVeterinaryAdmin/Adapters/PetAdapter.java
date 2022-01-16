@@ -32,6 +32,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.AsiEkleModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KullaniciPetlerModel;
+import tech.halitpractice.OZKVeterinaryAdmin.Models.PetSilModel;
 import tech.halitpractice.OZKVeterinaryAdmin.R;
 import tech.halitpractice.OZKVeterinaryAdmin.RestApi.ManagerAll;
 import tech.halitpractice.OZKVeterinaryAdmin.Utils.ChangeFragments;
@@ -65,9 +66,15 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
         holder.petNameText.setText(list.get(position).getPetisim().toString());
-        holder.petBilgiText.setText("Bu petin turu "+list.get(position).getPettur().toString()
-                +" cinsi "+list.get(position).getPetcins().toString()+"dir. "+list.get(position).getPetisim().toString()
-        +" isimli bu pete asi eklemek icin tiklayin ");
+//        holder.petBilgiText.setText("Bu petin turu "+list.get(position).getPettur().toString() +" cinsi "+list.get(position).getPetcins().toString()+"dir. "+list.get(position).getPetisim().toString() +" isimli bu pete asi eklemek icin tiklayin ");
+        holder.petBilgiText.setText("Bu petin turu "+list.get(position).getPetisim()+" petini silmek icin buraya tiklayin");
+        holder.petBilgiText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                petSilAlert(position);
+//                Toast.makeText(context, list.get(position).getPetid().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
         Picasso.get().load(list.get(position).getPetresim()).resize(200,200).into(holder.petImage);
 
@@ -182,6 +189,67 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.ViewHolder>{
         });
 
     }
+
+    public void petSilAlert(final int position){
+        LayoutInflater layoutInflater = activity.getLayoutInflater();
+        View view = layoutInflater.inflate(R.layout.pet_sil_layout,null);
+        Button petSilButon = view.findViewById(R.id.petSilButon);
+        Button petSilIptalButon = view.findViewById(R.id.petSilIptalButon);
+
+
+        final AlertDialog.Builder alert = new AlertDialog.Builder(context);
+        alert.setView(view);
+        alert.setCancelable(true);
+        final AlertDialog alertDialog = alert.create();
+        petSilButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                petSil(list.get(position).getPetid().toString(),position);
+                alertDialog.cancel();
+            }
+        });
+        petSilIptalButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.cancel();
+            }
+        });
+        alertDialog.show();
+
+    }
+
+    public void petSil(String id, final int position){
+
+        Call<PetSilModel> req = ManagerAll.getInstance().petDelete(id);
+        req.enqueue(new Callback<PetSilModel>() {
+            @Override
+            public void onResponse(Call<PetSilModel> call, Response<PetSilModel> response) {
+
+                if (response.body().isTf()){
+                    Toast.makeText(context, response.body().getText().toString(), Toast.LENGTH_SHORT).show();
+                    deleteToList(position);
+
+                }else {
+                    Toast.makeText(context, response.body().getText().toString(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<PetSilModel> call, Throwable t) {
+                Toast.makeText(context, Warnings.internetProblemText, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+    }
+
+    public void deleteToList(int position){
+        list.remove(position);
+        notifyItemRemoved(position);
+        notifyDataSetChanged();
+    }
+
 
 
 

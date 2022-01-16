@@ -18,6 +18,7 @@ import tech.halitpractice.OZKVeterinaryAdmin.Models.KullaniciSilModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KullanicilarModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.PetAsiTakipModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.PetEkle;
+import tech.halitpractice.OZKVeterinaryAdmin.Models.PetSilModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.SoruModel;
 
 public interface RestApi {
@@ -70,6 +71,10 @@ public interface RestApi {
     @FormUrlEncoded
     @POST("/veteriner/veterinerKullaniciSil.php")
     Call<KullaniciSilModel> kullaniciSil(@Field("id") String id );
+
+    @FormUrlEncoded
+    @POST("/veteriner/veterinerPetSil.php")
+    Call<PetSilModel> petSil(@Field("id") String id );
 
 
 }
