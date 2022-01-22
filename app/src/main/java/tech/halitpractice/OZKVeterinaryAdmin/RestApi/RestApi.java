@@ -27,11 +27,11 @@ public interface RestApi {
     Call<List<KampanyaModel>> getKampanya();
 
     @FormUrlEncoded
-    @POST("/veteriner/kampanyaekle.php")
+    @POST("/veteriner/veterinerAdminKampanyaEkle.php")
     Call<KampanyaEkleModel> addKampanya(@Field("baslik") String baslik, @Field("text") String text, @Field("resim") String resim);
 
     @FormUrlEncoded
-    @POST("/veteriner/kampanyasil.php")
+    @POST("/veteriner/veterinerAdminKampanyaSil.php")
     Call<KampanyaSilModel> kampanyaSil(@Field("id") String kamid );
 
     @FormUrlEncoded
@@ -61,7 +61,7 @@ public interface RestApi {
     Call<List<KullaniciPetlerModel>> getPets(@Field("musid") String id );
 
     @FormUrlEncoded
-    @POST("/veteriner/veterinerAdminPetEkle.php")
+    @POST("/veteriner/veterinerAdminPetEkleMuh.php")
     Call<PetEkle> petEkle(@Field("musid") String musid, @Field("isim") String isim, @Field("tur") String tur, @Field("cins") String cins, @Field("resim") String resim);
 
     @FormUrlEncoded
@@ -69,11 +69,11 @@ public interface RestApi {
     Call<AsiEkleModel> asiEkle(@Field("musid") String musid, @Field("petid") String petid, @Field("name") String name, @Field("tarih") String tarih );
 
     @FormUrlEncoded
-    @POST("/veteriner/veterinerKullaniciSil.php")
+    @POST("/veteriner/veterinerAdminKullaniciSilMuh.php")
     Call<KullaniciSilModel> kullaniciSil(@Field("id") String id );
 
     @FormUrlEncoded
-    @POST("/veteriner/veterinerPetSil.php")
+    @POST("/veteriner/veterinerAdminPetSilMuh.php")
     Call<PetSilModel> petSil(@Field("id") String id );
 
 
