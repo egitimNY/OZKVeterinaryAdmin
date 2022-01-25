@@ -69,14 +69,15 @@ public class AsiTakipFragment extends Fragment {
             @Override
             public void onResponse(Call<List<PetAsiTakipModel>> call, Response<List<PetAsiTakipModel>> response) {
                 if (response.body().get(0).isTf()){
-                    Toast.makeText(getContext(), "Bugun "+response.body().size() + " pete asi yapilacaktir", Toast.LENGTH_LONG).show();
+//                    Toast.makeText(getContext(), "Bugun "+response.body().size() + " pete asi yapilacaktir", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Pet will be vaccinated "+response.body().size() + " Today", Toast.LENGTH_LONG).show();
 //                    Log.i( "bugunlukPetler",response.body().toString());
                     list = response.body();
                     petAsiTakipAdapter = new PetAsiTakipAdapter(list,getContext(),getActivity());
                     asiTakipRecyclerView.setAdapter(petAsiTakipAdapter);
 
                 }else {
-                    Toast.makeText(getContext(), "Bugun asi yapilacak pet yoktur.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "There is no pet to be vaccinated Today.", Toast.LENGTH_LONG).show();
                     changeFragments.change(new HomeFragment());
                 }
             }

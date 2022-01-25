@@ -22,13 +22,15 @@
         android:textColor="#10102c"
         android:textStyle="bold"
         android:textSize="20dp"
+        android:layout_margin="5dp"
         android:gravity="center"
-        android:text="You can add a new campaign from this screen"/>
+        android:text="You can add a new campaign"/>
 
     <EditText
         android:id="@+id/kampanyaBaslikEditText"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:paddingLeft="13dp"
         android:background="@drawable/edit_text_background"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
@@ -39,6 +41,7 @@
         android:id="@+id/kampanyaIcerikEditText"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:paddingLeft="13dp"
         android:background="@drawable/edit_text_background"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.GirisYapActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        app:cardElevation="20dp"
+        android:layout_gravity="center"
+        app:cardCornerRadius="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/info_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="top|center"
+                android:text="OZK Veterinary Admin"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:textColor="#0D406C"
+                android:layout_marginTop="50dp"/>
+            <ImageView
+                android:layout_width="165dp"
+                android:layout_height="128dp"
+                android:layout_gravity="center"
+                android:background="@drawable/cat"
+                android:layout_marginTop="15dp"/>
+
+
+
+            <EditText
+                android:id="@+id/loginMailAddress"
+                android:layout_width="322dp"
+                android:layout_height="55dp"
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/custom_email_icon"
+                android:drawableLeft="@drawable/ic_email"
+                android:layout_marginTop="25dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:drawablePadding="12dp"
+                android:layout_gravity="center"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                android:hint="Enter Your Email Address" />
+
+            <EditText
+                android:id="@+id/loginPassword"
+                android:layout_width="322dp"
+                android:ems="10"
+                android:layout_height="55dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:layout_gravity="center"
+                android:drawablePadding="12dp"
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/custom_lock_icon"
+                android:layout_marginTop="7dp"
+                android:hint="Enter Your Password"
+                android:focusableInTouchMode="true"
+                android:inputType="textPassword"
+                android:drawableLeft="@drawable/ic_lock" />
+
+            <Button
+                android:id="@+id/loginButon"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:background="@drawable/button_input"
+                android:gravity="center"
+                android:text="Login"/>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

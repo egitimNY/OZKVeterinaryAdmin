@@ -50,8 +50,8 @@ public class PetAsiTakipAdapter extends RecyclerView.Adapter<PetAsiTakipAdapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
         holder.asiTakipPetName.setText(list.get(position).getAsiisim());
-        holder.asiTakipBilgiText.setText(list.get(position).getKadi()+ " isimli kullanicinin "+ list.get(position).getPetisim()
-        + " isimli petinin "+list.get(position).getAsiisim()+ " asisi yapilacaktir.");
+        holder.asiTakipBilgiText.setText(list.get(position).getKadi()+ " isimli kullanicinin "+ list.get(position).getPetisim() + " isimli petinin "+list.get(position).getAsiisim()+ " asisi yapilacaktir.");
+//        holder.asiTakipBilgiText.setText(list.get(position).getKadi()+ " named "+ list.get(position).getPetisim() + " The pet of the user "+list.get(position).getAsiisim()+ " will be vaccinated.");
         Picasso.get().load(list.get(position).getPetresim()).resize(200,180).into(holder.asiTakipImage);
         holder.asiTakipAraButon.setOnClickListener(new View.OnClickListener() {
             @Override

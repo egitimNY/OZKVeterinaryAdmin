@@ -64,7 +64,7 @@ public class KullanicilarFragment extends Fragment {
                     Log.i( "kullanicilar",response.body().toString());
 
                 }else {
-                    Toast.makeText(getContext(), "Sisteme kayitli kullanici yoktur..", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "There is no user registered to the system..", Toast.LENGTH_LONG).show();
                     changeFragments.changeBack(new HomeFragment());
                 }
 

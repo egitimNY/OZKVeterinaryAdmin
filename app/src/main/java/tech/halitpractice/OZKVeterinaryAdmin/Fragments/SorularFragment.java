@@ -60,7 +60,8 @@ public class SorularFragment extends Fragment {
                     soruRecyView.setAdapter(veterinerSoruAdapter);
 
                 }else {
-                    Toast.makeText(getContext(), "Veteriner hekime hic soru sorulmamistir. ", Toast.LENGTH_LONG).show();
+//                    Toast.makeText(getContext(), "Veteriner hekime hic soru sorulmamistir. ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), " No questions were asked to the veterinarian. ", Toast.LENGTH_LONG).show();
                     changeFragments.changeBack(new HomeFragment());
 
                 }

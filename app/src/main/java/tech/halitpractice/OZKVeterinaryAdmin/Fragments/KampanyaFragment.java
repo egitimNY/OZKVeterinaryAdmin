@@ -97,8 +97,8 @@ public class KampanyaFragment extends Fragment {
 
 
                 }else {
-                    Toast.makeText(getContext(), "Herhangi bir kampanya bulunmamaktadir..", Toast.LENGTH_SHORT).show();
-                    changeFragments.change(new HomeFragment());
+                    Toast.makeText(getContext(), "There are no campaigns..", Toast.LENGTH_SHORT).show();
+//                    changeFragments.change(new HomeFragment());
                 }
 
             }

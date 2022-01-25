@@ -105,11 +105,12 @@ public class KullaniciPetlerFragment extends Fragment {
                     list = response.body();
                     petAdapter = new PetAdapter(list,getContext(),getActivity(),musid);
                     userPetListRecView.setAdapter(petAdapter);
-                    Toast.makeText(getContext(), "Kullanciya Ait "+response.body().size()+" tane pet bulunmustur. ", Toast.LENGTH_LONG).show();
+//                    Toast.makeText(getContext(), "Kullanciya Ait "+response.body().size()+" tane pet bulunmustur. ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "User's "+response.body().size()+" piece pet was found. ", Toast.LENGTH_LONG).show();
 
                 }else {
 //                    changeFragments.changeBack(new KullanicilarFragment());
-                    Toast.makeText(getContext(), "Kullanciya ait pet bulunamamistir.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Pet not found for user.", Toast.LENGTH_LONG).show();
                     petEkleResimYok.setVisibility(View.VISIBLE);
                     petEkleUyariText.setVisibility(View.VISIBLE);
                     userPetListRecView.setVisibility(View.GONE);

@@ -23,9 +23,9 @@
                 android:layout_marginTop="5dp"
                 android:textColor="#fff"
                 android:textStyle="bold"
-                android:textSize="20dp"
+                android:textSize="25sp"
                 android:gravity="center"
-                android:text="Bu ekrandan kullaniciya yeni pet ekleyebilirsiniz."/>
+                android:text="You can add a new pet to the user from this screen."/>
 
             <EditText
                 android:id="@+id/petEkleNameEditText"
@@ -36,7 +36,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="10dp"
-                android:hint="Pet Ismi Giriniz"/>
+                android:hint="Enter Pet's Name"/>
 
             <EditText
                 android:id="@+id/petEkleTurEditText"
@@ -48,7 +48,7 @@
                 android:paddingLeft="13dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="20dp"
-                android:hint="Pet Türü Giriniz"/>
+                android:hint="Enter Pet's Type"/>
 
             <EditText
                 android:id="@+id/petEkleCinsEditText"
@@ -60,7 +60,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="20dp"
-                android:hint="Pet Özelligi Giriniz"/>
+                android:hint="Enter Pet's breed"/>
 
             <ImageView
                 android:id="@+id/petEkleImageView"
@@ -89,7 +89,7 @@
                     android:background="@drawable/edit_text_background"
                     android:textColor="#000000"
                     android:layout_weight="1"
-                    android:text="Ekle"/>
+                    android:text="Add"/>
                 <Button
                     android:id="@+id/petEkleResimSecButon"
                     android:layout_width="0dp"
@@ -99,7 +99,7 @@
                     android:background="@drawable/edit_text_background"
                     android:textColor="#000000"
                     android:layout_weight="1"
-                    android:text="Resim Sec"/>
+                    android:text="Select Image"/>
 
             </LinearLayout>
         </LinearLayout>

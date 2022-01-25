@@ -67,7 +67,9 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.ViewHolder>{
 
         holder.petNameText.setText(list.get(position).getPetisim().toString());
 //        holder.petBilgiText.setText("Bu petin turu "+list.get(position).getPettur().toString() +" cinsi "+list.get(position).getPetcins().toString()+"dir. "+list.get(position).getPetisim().toString() +" isimli bu pete asi eklemek icin tiklayin ");
-        holder.petBilgiText.setText("Bu petin turu "+list.get(position).getPetisim()+" petini silmek icin buraya tiklayin");
+//        holder.petBilgiText.setText("Bu petin turu "+list.get(position).getPetisim()+" petini silmek icin buraya tiklayin");
+//        holder.petBilgiText.setText("The type of this pet "+list.get(position).getPetisim()+" click here to delete your pet");
+        holder.petBilgiText.setText("Click to delete the Pet's named of "+list.get(position).getPetisim());
         holder.petBilgiText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

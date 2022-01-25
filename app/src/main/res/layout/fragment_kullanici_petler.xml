@@ -43,7 +43,9 @@
         android:layout_margin="5dp"
         android:layout_alignParentBottom="true"
         android:background="#5091cb"
-        android:text="Kullaniciya Yeni Pet Ekle"
+        android:text="Add New Pet to User"
+        android:textAllCaps="false"
         android:textColor="#fff"
+        android:textSize="17sp"
         android:textStyle="bold"/>
 </RelativeLayout>

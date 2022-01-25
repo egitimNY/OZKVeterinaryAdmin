@@ -16,6 +16,7 @@ import tech.halitpractice.OZKVeterinaryAdmin.Models.KampanyaSilModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KullaniciPetlerModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KullaniciSilModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.KullanicilarModel;
+import tech.halitpractice.OZKVeterinaryAdmin.Models.LoginModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.PetAsiTakipModel;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.PetEkle;
 import tech.halitpractice.OZKVeterinaryAdmin.Models.PetSilModel;
@@ -23,7 +24,7 @@ import tech.halitpractice.OZKVeterinaryAdmin.Models.SoruModel;
 
 public interface RestApi {
 
-    @GET("/veteriner/kampanyaidli.php")
+    @GET("/veteriner/veterinerAdminKampanyaidli.php")
     Call<List<KampanyaModel>> getKampanya();
 
     @FormUrlEncoded
@@ -31,7 +32,7 @@ public interface RestApi {
     Call<KampanyaEkleModel> addKampanya(@Field("baslik") String baslik, @Field("text") String text, @Field("resim") String resim);
 
     @FormUrlEncoded
-    @POST("/veteriner/veterinerAdminKampanyaSil.php")
+    @POST("/veteriner/veterinerAdminKampanyaSilHal.php")
     Call<KampanyaSilModel> kampanyaSil(@Field("id") String kamid );
 
     @FormUrlEncoded
@@ -75,6 +76,10 @@ public interface RestApi {
     @FormUrlEncoded
     @POST("/veteriner/veterinerAdminPetSilMuh.php")
     Call<PetSilModel> petSil(@Field("id") String id );
+
+    @FormUrlEncoded
+    @POST("/veteriner/veterinerAdminGirisyap.php")
+    Call<LoginModel> loginUser(@Field("mailadres") String mailAdres, @Field("sifre") String pass);
 
 
 }
